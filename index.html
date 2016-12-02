@@ -95,8 +95,9 @@
       </a-assets>
 
      <a-camera stereocam="eye:left;">
+       <a-image id="splashImage" src="#splashInfo" width="2307" height="1351" scale="0.01 0.01 0.01" rotation="0 0 0" position="0 1 -20" visible="true" onmousedown="moveWelcome()" sound="src: #silence; loop: false; on: mousedown"></a-image>
 
-       <a-cursor id="cursorSplash" fuse="false" visible="true" geometry="primitive: circle; radius: 0.5" scale="0.02 0.02 0.02" material="color: #FFCF27; shader: flat"></a-cursor>
+       <a-cursor id="cursorSplash" fuse="false" visible="true" position="0 0 -100" geometry="primitive: circle; radius: 0.5" material="color: #FFFFFF; shader: flat"></a-cursor>
 
        <a-cursor id="cursFuse" scale="2.5 2.5 2.5" geometry="primitive: ring; thetaStart:0; thetaLength:0;" fuse="true" fuseTimeout="4000" cursor-feedback="dur:1500; property:geometry.thetaLength; to:360;" material="color: #FFCF27; shader: flat" visible="false"></a-cursor>
 
@@ -127,7 +128,6 @@
 
         <!-- SPLASH -->
         <a-entity id="splashScene" visible="true" opacity="1">
-          <a-image id="splashImage" src="#splashInfo" width="2307" height="1351" scale="0.01 0.01 0.01" rotation="0 0 0" position="0 1 -20" visible="true" onmousedown="moveWelcome()" sound="src: #silence; loop: false; on: mousedown"></a-image>
           <a-sky src="#splashBg" id="splashSky" stereo="eye:both" radius="5000" theta-length="360" rotation="0 0 0" scale="0.8 0.8 0.8" visible="true" onmousedown="moveWelcome()"></a-sky>
         </a-entity>
 
@@ -393,6 +393,7 @@
 
         function moveWelcome() {
           document.getElementById('welcomeScene').setAttribute('visible', 'true')
+          document.getElementById('splashImage').setAttribute('visible', 'false')
           document.getElementById('splashScene').setAttribute('visible', 'false')
           document.getElementById('entranceScene').setAttribute('visible', 'false')
           document.getElementById('houseScene').setAttribute('visible', 'false')
