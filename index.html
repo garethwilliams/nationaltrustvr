@@ -90,7 +90,7 @@
         <audio id="outSoundsAud" src="assets/audio/outSounds.mp3" preload="auto">
 
         <audio id="bearRoarSound" src="assets/audio/bearRoar.mp3" preload="auto">
-          <audio id="silence" src="assets/audio/silence.mp3" preload="auto">
+        <audio id="silence" src="assets/audio/silence.mp3" preload="auto">
 
       </a-assets>
 
@@ -127,7 +127,7 @@
 
         <!-- SPLASH -->
         <a-entity id="splashScene" visible="true" opacity="1">
-          <a-image id="splashImage" src="#splashInfo" width="2307" height="1351" scale="0.01 0.01 0.01" rotation="0 0 0" position="0 1 -20" visible="true" onmousedown="moveWelcome()"></a-image>
+          <a-image id="splashImage" src="#splashInfo" width="2307" height="1351" scale="0.01 0.01 0.01" rotation="0 0 0" position="0 1 -20" visible="true" onmousedown="moveWelcome()" sound="src: #silence; loop: false; on: mousedown"></a-image>
           <a-sky src="#splashBg" id="splashSky" stereo="eye:both" radius="5000" theta-length="360" rotation="0 0 0" scale="0.8 0.8 0.8" visible="true" onmousedown="moveWelcome()"></a-sky>
         </a-entity>
 
