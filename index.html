@@ -61,6 +61,7 @@
         <img id="moveToHse" crossorigin="anonymous" src="assets/global/moveHse.jpg">
         <img id="moveToBer" crossorigin="anonymous" src="assets/global/moveBear.jpg">
         <img id="moveToInBer" crossorigin="anonymous" src="assets/global/moveInBear.jpg">
+        <img id="moveClump" crossorigin="anonymous" src="assets/global/moveClump.jpg">
         <img id="moveCmpHorse" crossorigin="anonymous" src="assets/global/moveChorse.jpg">
 
         <!-- Menu images -->
@@ -235,8 +236,8 @@
           <a-image id="bearIn-target" src="#target" width="300" height="180" rotation="0 -45 0" position="-488 0 423" scale="1 1 1" onclick="moveInBer()" visible="true" transparent="true" data-interactive="true">
           </a-image>
 
-          <!-- <a-image id="bearIn-move" src="#moveToInBer" width="1874" height="284" rotation="0 -220 0" position="-401 -40 300" visible="true" scale="0.07 0.07 0.07">
-          </a-image> -->
+          <a-image id="bearIn-move" src="#moveToInBer" width="1874" height="284" rotation="0 -220 0" position="-401 -40 300" visible="true" scale="0.07 0.07 0.07">
+          </a-image> 
 
         </a-entity>
 
@@ -247,6 +248,11 @@
           <a-sky src="#bearInside" id="inBear" rotation="0 0 0" radius="5000" theta-length="360" rotation="0 100 0" scale="0.8 0.8 0.8" visible="true"></a-sky>
 
           <a-image id="backToMenu" id="menuBer-target" src="#backMenu" width="300" height="300" rotation="270 0 0" position="0 -400 0" scale="0.6 0.6 0.6" onclick="moveMenu()" visible="true" transparent="true" data-interactive="true"> </a-image>
+
+          <a-image id="clump-target" src="#targetDev" width="300" height="180" rotation="0 -45 0" position="-488 0 423" scale="1 1 1" onclick="moveCmp()" visible="true" transparent="true" data-interactive="true">
+          </a-image>
+
+          <a-image id="clump-move" src="#moveClump" width="2276" height="284" rotation="0 -220 0" position="-401 -40 300" visible="true" scale="0.07 0.07 0.07">
 
         </a-entity>
 
