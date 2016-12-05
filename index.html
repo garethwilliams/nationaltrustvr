@@ -108,6 +108,12 @@
         <audio id="eTourAud" src="assets/audio/entTourA.mp3" preload="auto">
         <audio id="outSoundsAud" src="assets/audio/outSounds.mp3" preload="auto">
 
+        <audio id="bearTourIn" src="assets/audio/bearInside.mp3" preload="auto">
+        <audio id="bearTourOut" src="assets/audio/bearOutside.mp3" preload="auto">
+        <audio id="gardenTour" src="assets/audio/gardensTree.mp3" preload="auto">
+        <audio id="clumpTourA" src="assets/audio/theClumpA.mp3" preload="auto">
+        <audio id="clumpTourB" src="assets/audio/theClumpB.mp3" preload="auto">          
+
         <audio id="bearRoarSound" src="assets/audio/bearRoar.mp3" preload="auto">
         <audio id="silence" src="assets/audio/silence.mp3" preload="auto">
 
@@ -128,7 +134,7 @@
 
         <!-- Audio -->
         <a-sound src="#welcomeAud" id="welcomeS" autoplay="true" position="0 0 0" loop="true" volume="0.2"></a-sound>
-        <a-sound src="#bearHutAud" id="bearHut" autoplay="false" position="0 0 0" loop="true" on="playBH" volume="0.7"></a-sound>
+        <a-sound src="#bearHutAud" id="bearHut" autoplay="false" position="0 0 0" loop="true" on="playBH" volume="0.5"></a-sound>
         <a-sound src="#hTourGAud" id="hTourG" autoplay="false" position="0 0 0" loop="false" on="playhTourG"></a-sound>
         <a-sound src="#hTourOAud" id="hTourO" autoplay="false" position="0 0 0" loop="false" on="playhTourO"></a-sound>
         <a-sound src="#hTourPAud" id="hTourP" autoplay="false" position="0 0 0" loop="false" on="playhTourP"></a-sound>
@@ -137,14 +143,20 @@
 
         <a-sound src="#hTourCAud" id="hTourC" autoplay="false" position="0 0 0" loop="false" on="playhTourC"></a-sound>
 
-        <a-sound src="#hMusicAud" id="hMusic" autoplay="false" position="-4 0 -4" loop="true" on="playhMusic" volume="0.7"></a-sound>
+        <a-sound src="#hMusicAud" id="hMusic" autoplay="false" position="-4 0 -4" loop="true" on="playhMusic" volume="0.5"></a-sound>
 
-        <a-sound src="#gSoundsAud" id="gSounds" autoplay="false" position="0 0 0" loop="true" on="playgSounds" volume="0.7"></a-sound>
+        <a-sound src="#gSoundsAud" id="gSounds" autoplay="false" position="0 0 0" loop="true" on="playgSounds" volume="0.5"></a-sound>
         <a-sound src="#eTourAud" id="eTour" autoplay="false" position="0 0 0" loop="false" on="playeTour"></a-sound>
 
-        <a-sound src="#outSoundsAud" id="outSounds" autoplay="false" position="0 0 0" loop="true" on="playOSounds" volume="0.7"></a-sound>
+        <a-sound src="#outSoundsAud" id="outSounds" autoplay="false" position="0 0 0" loop="true" on="playOSounds" volume="0.5"></a-sound>
 
         <a-sound src="#bearRoarSound" id="bearRoar" autoplay="false" position="0 0 0" loop="false" on="playbearRoar"></a-sound>
+
+        <a-sound src="#bearTourIn" id="bearTin" autoplay="false" position="0 0 0" loop="false" on="playbearTin"></a-sound>
+        <a-sound src="#bearTourOut" id="bearTout" autoplay="false" position="0 0 0" loop="false" on="playbearTout"></a-sound>
+        <a-sound src="#gardenTour" id="gardenT" autoplay="false" position="0 0 0" loop="false" on="playgardenT"></a-sound>
+        <a-sound src="#clumpTourA" id="clumpAT" autoplay="false" position="0 0 0" loop="false" on="playclumpAT"></a-sound>
+        <a-sound src="#clumpTourB" id="clumpBT" autoplay="false" position="0 0 0" loop="false" on="playclumpBT"></a-sound>
 
         <!-- SPLASH -->
         <a-entity id="splashScene" visible="false" opacity="1">
@@ -291,10 +303,10 @@
 
           <a-image id="backToMenu" id="menuBer-target" src="#backMenu" width="300" height="300" rotation="270 0 0" position="0 -400 0" scale="0.6 0.6 0.6" onclick="moveMenu()" visible="true" transparent="true" data-interactive="true"> </a-image>
 
-          <a-image id="clumpHorse-target" src="#target" width="150" height="90" rotation="0 -120 0" position="-450 -15 -386" scale="1 1 1" onclick="moveClumpHorse()" visible="true" transparent="true" data-interactive="true">
+          <a-image id="clumpHorse-target" src="#target" width="150" height="90" rotation="0 -120 0" position="-450 -15 -386" scale="1 1 1" onclick="moveClumpHorse()" visible="false" transparent="true" data-interactive="true">
           </a-image>
 
-          <a-image id="clumpHorse-move" src="#moveCmpHorse" width="1966" height="284" rotation="0 56 0" position="-401 -40 -350" visible="true" scale="0.07 0.07 0.07" onclick="moveClumpHorse()">
+          <a-image id="clumpHorse-move" src="#moveCmpHorse" width="1966" height="284" rotation="0 56 0" position="-401 -40 -350" visible="false" scale="0.07 0.07 0.07" onclick="moveClumpHorse()">
           </a-image>
 
         </a-entity>
@@ -550,12 +562,17 @@
               document.querySelector('#welcomeS').pause();
               document.querySelector('#bearHut').play();
               document.querySelector('#bearHut').emit('playBH');
+              document.querySelector('#bearTout').emit('playbearTout');
             }
 
             function moveInBer() {
               document.getElementById('bearScene').setAttribute('visible', 'false')
               document.getElementById('bearInScene').setAttribute('visible', 'true')
               document.querySelector('#bearRoar').emit('playbearRoar');
+
+              document.querySelector('#bearRoar').addEventListener('sound-ended', function() {
+                 document.querySelector('#bearTin').emit('playbearTin');
+              });
             }
 
           function moveGDN() {
@@ -572,6 +589,10 @@
             document.querySelector('#outSounds').play();
             document.querySelector('#hTourG').emit('playhTourG');
             document.querySelector('#outSounds').emit('playOSounds');
+
+            document.querySelector('#hTourG').addEventListener('sound-ended', function() {
+                 document.querySelector('#gardenT').emit('playgardenT');
+              });
           }
 
           function moveCmp() {
@@ -585,13 +606,22 @@
             document.querySelector('#hMusic').pause();
             document.querySelector('#welcomeS').pause();
             document.querySelector('#outSounds').play();
-            document.querySelector('#hTourG').emit('playhTourG');
+            document.querySelector('#clumpAT').emit('playclumpAT');
             document.querySelector('#outSounds').emit('playOSounds');
+
+             document.querySelector('#clumpAT').addEventListener('sound-ended', function() {
+                 document.getElementById('clumpHorse-target').setAttribute('visible', 'true')
+                 document.getElementById('clumpHorse-move').setAttribute('visible', 'true')
+             });
+
+
           }
 
            function moveClumpHorse() {
               document.getElementById('clumpScene').setAttribute('visible', 'false')
               document.getElementById('clumpHorseScene').setAttribute('visible', 'true')
+
+              document.querySelector('#clumpBT').emit('playclumpBT');
             }
 
           function menuLoader() {
