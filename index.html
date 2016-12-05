@@ -18,7 +18,7 @@
   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
   crossorigin="anonymous"></script>
     <link href="assets/styles.css" rel="stylesheet">
-    
+
   </head>
   <body>
     <a-scene>
@@ -91,7 +91,7 @@
         <a-mixin id="trigOutAni" attribute="geometry.theta-length" begin="trigOut" to="0" dur="4000"></a-mixin>
 
         <a-mixin id="loadingAn" attribute="geometry.thetaLength" begin="gogogo" dur="6000" from="0" to="360" fill="backwards"></a-mixin>
-        
+
 
         <audio id="welcomeAud" src="assets/audio/welcome.mp3" preload="auto">
         <audio id="bearHutAud" src="assets/audio/bearHut.mp3" preload="auto">
@@ -114,10 +114,10 @@
 
 
 
-      <a-camera stereocam="eye:left;" look-controls mouse-cursor> 
+      <a-camera stereocam="eye:left;" look-controls mouse-cursor>
 
       <a-cursor id="cursFuse" position="0 0 -10" scale="20 20 20" geometry="primitive: ring; thetaStart:90; thetaLength:20;" fuse="true" fuse-timeout="3000" cursor-feedback="dur:3000; property:geometry.thetaLength; to:360;" material="color: #FFCF27; shader: flat" visible="true">
-      </a-cursor> 
+      </a-cursor>
 
  <!--      <a-cursor id="curs" fuse="true" fuse-timeout="2000" geometry="primitive: circle; radius: 0.5" scale="0.02 0.02 0.02" material="color: #FFCF27; shader: flat" visible="true"></a-cursor> -->
 
@@ -157,9 +157,9 @@
         <!-- WELCOME -->
         <a-entity id="welcomeScene" visible="true" opacity="1">
 
-        
-         
-  
+
+
+
           <a-sky src="#welBG" id="wel-panL" stereo="eye:both" radius="5000" theta-length="360" rotation="0 -89 0" scale="0.8 0.8 0.8" visible="true"></a-sky>
 
           <a-plane src="#welcome" width="586" height="418" side="front" rotation="0 0 0" position="0 3 -30" scale="0.03 0.03 0.03" transparent="true" sound="src: #silence; loop: false; on: mousedown"></a-plane>
@@ -170,11 +170,11 @@
 
           <a-image class="isClickable" id="menuEnt-target" src="#menuEnt" width="1000" height="712" rotation="0 -35.82 0" position="18.58 3.80 -21.99" scale="0.01 0.01 0.01" onclick="moveEnt()" visible="true" transparent="true" data-interactive="true">
           </a-image>
-    
+
 
           <a-image class="isClickable" id="menuHse-target" src="#menuHse" width="1000" height="712" rotation="0 -62.28 0" position="25.42 3.80 -13.21" scale="0.01 0.01 0.01" onclick="moveHse()" visible="true" transparent="true" data-interactive="true">
           </a-image>
-    
+
 
           <a-image id="menuGdn-target" src="#menuGdn" width="1000" height="712" rotation="0 -84.58 0" position="28.49 3.80 -2.30" scale="0.01 0.01 0.01" onclick="moveGDN()" visible="true" transparent="true" data-interactive="true">
           </a-image>
@@ -258,7 +258,7 @@
           </a-image>
 
           <a-image id="bearIn-move" src="#moveToInBer" width="1874" height="284" rotation="0 -232 0" position="-260 -40 185" visible="true" scale="0.07 0.07 0.07" onclick="moveInBer()"  >
-          </a-image> 
+          </a-image>
 
         </a-entity>
 
@@ -283,7 +283,7 @@
         <a-entity id="clumpScene" visible="false" material="opacity: 1">
 
           <a-sky src="#clumpRight" id="clump-panR" rotation="0 237 0" radius="5000" theta-length="360" rotation="0 100 0" scale="0.8 0.8 0.8" visible="true"></a-sky>
-        
+
           <a-image id="backToMenu" id="menuBer-target" src="#backMenu" width="300" height="300" rotation="270 0 0" position="0 -400 0" scale="0.6 0.6 0.6" onclick="moveMenu()" visible="true" transparent="true" data-interactive="true"> </a-image>
 
           <a-image id="clumpHorse-target" src="#targetDev" width="150" height="90" rotation="0 -120 0" position="-450 -15 -386" scale="1 1 1" onclick="moveClumpHorse()" visible="true" transparent="true" data-interactive="true">
@@ -299,7 +299,7 @@
         <a-entity id="clumpHorseScene" visible="false" material="opacity: 1">
 
           <a-sky src="#clumpHorse" id="cHorse" rotation="0 237 0" radius="5000" theta-length="360" rotation="0 100 0" scale="0.8 0.8 0.8" visible="true"></a-sky>
-        
+
           <a-image id="backToMenu" id="menuBer-target" src="#backMenu" width="300" height="300" rotation="270 0 0" position="0 -400 0" scale="0.6 0.6 0.6" onclick="moveMenu()" visible="true" transparent="true" data-interactive="true"> </a-image>
 
         </a-entity>
@@ -455,9 +455,9 @@
           document.getElementById('houseScene').setAttribute('visible', 'false')
           document.getElementById('gardenScene').setAttribute('visible', 'false')
           document.getElementById('bearScene').setAttribute('visible', 'false')
-          document.getElementById('bearInScene').setAttribute('visible', 'false') 
+          document.getElementById('bearInScene').setAttribute('visible', 'false')
 
-                
+
 
           // document.getElementById('cursorSplash').setAttribute('visible', 'false')
           // document.getElementById('curs').setAttribute('visible', 'true')
@@ -469,7 +469,7 @@
           document.querySelector('#welcomeS').play();
           document.querySelector('#bearHut').pause();
 
-           $("#onTopScreen").css("z-index", "-10"); 
+           $("#onTopScreen").css("z-index", "-10");
         }
 
         function moveMenu() {
@@ -645,6 +645,19 @@
             source.noteOn(0);
 
           }, false);
+        </script>
+
+        <audio id="silent" preload="auto">
+           <source src="assets/audio/silence.mp3" id="1"></source>
+        </audio>
+
+        <script type="text/javascript">
+          $("enterBtn.play").click(function() {
+          var id = $('this').data('id');
+
+          var audio = $('#mysoudclip #'+id)[0];
+              audio.play();
+          });
         </script>
 
       </a-scene>
