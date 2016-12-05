@@ -151,7 +151,7 @@
         </a-entity>
 
         <div id="onTopScreen">
-          <p class="enterBtn" onmousedown="moveWelcome()" sound="src: #silence; loop: false; on: mousedown">Enter</p>
+          <button type="button" onmousedown="moveWelcome()">play</button>
         </div>
 
         <!-- WELCOME -->
@@ -647,17 +647,15 @@
           }, false);
         </script>
 
-        <audio id="silent" preload="auto">
+        <audio id="mysoundclip" preload="auto">
            <source src="assets/audio/silence.mp3" id="1"></source>
         </audio>
 
         <script type="text/javascript">
-          $("enterBtn.play").click(function() {
-          var id = $('this').data('id');
-
-          var audio = $('#mysoudclip #'+id)[0];
-              audio.play();
-          });
+          var audio = $("#mysoundclip")[0];
+          $("button").click(function() {
+          audio.play();
+          });​
         </script>
 
       </a-scene>
