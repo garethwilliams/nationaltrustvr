@@ -110,7 +110,7 @@
 
         <audio id="bearTourIn" src="assets/audio/bearInside.mp3" preload="auto">
         <audio id="bearTourOut" src="assets/audio/bearOutside.mp3" preload="auto">
-        <audio id="gardenTour" src="assets/audio/gardensTree.mp3" preload="auto">
+        <audio id="gardenTTour" src="assets/audio/gardensTree.mp3" preload="auto">
         <audio id="clumpTourA" src="assets/audio/theClumpA.mp3" preload="auto">
         <audio id="clumpTourB" src="assets/audio/theClumpB.mp3" preload="auto">          
 
@@ -134,7 +134,7 @@
 
         <!-- Audio -->
         <a-sound src="#welcomeAud" id="welcomeS" autoplay="true" position="0 0 0" loop="true" volume="0.2"></a-sound>
-        <a-sound src="#bearHutAud" id="bearHut" autoplay="false" position="0 0 0" loop="true" on="playBH" volume="0.5"></a-sound>
+        <a-sound src="#bearHutAud" id="bearHut" autoplay="false" position="0 0 0" loop="true" on="playBH" volume="0.3"></a-sound>
         <a-sound src="#hTourGAud" id="hTourG" autoplay="false" position="0 0 0" loop="false" on="playhTourG"></a-sound>
         <a-sound src="#hTourOAud" id="hTourO" autoplay="false" position="0 0 0" loop="false" on="playhTourO"></a-sound>
         <a-sound src="#hTourPAud" id="hTourP" autoplay="false" position="0 0 0" loop="false" on="playhTourP"></a-sound>
@@ -143,18 +143,18 @@
 
         <a-sound src="#hTourCAud" id="hTourC" autoplay="false" position="0 0 0" loop="false" on="playhTourC"></a-sound>
 
-        <a-sound src="#hMusicAud" id="hMusic" autoplay="false" position="-4 0 -4" loop="true" on="playhMusic" volume="0.5"></a-sound>
+        <a-sound src="#hMusicAud" id="hMusic" autoplay="false" position="-4 0 -4" loop="true" on="playhMusic" volume="0.3"></a-sound>
 
-        <a-sound src="#gSoundsAud" id="gSounds" autoplay="false" position="0 0 0" loop="true" on="playgSounds" volume="0.5"></a-sound>
+        <a-sound src="#gSoundsAud" id="gSounds" autoplay="false" position="0 0 0" loop="true" on="playgSounds" volume="0.3"></a-sound>
         <a-sound src="#eTourAud" id="eTour" autoplay="false" position="0 0 0" loop="false" on="playeTour"></a-sound>
 
-        <a-sound src="#outSoundsAud" id="outSounds" autoplay="false" position="0 0 0" loop="true" on="playOSounds" volume="0.5"></a-sound>
+        <a-sound src="#outSoundsAud" id="outSounds" autoplay="false" position="0 0 0" loop="true" on="playOSounds" volume="0.3"></a-sound>
 
         <a-sound src="#bearRoarSound" id="bearRoar" autoplay="false" position="0 0 0" loop="false" on="playbearRoar"></a-sound>
 
         <a-sound src="#bearTourIn" id="bearTin" autoplay="false" position="0 0 0" loop="false" on="playbearTin"></a-sound>
         <a-sound src="#bearTourOut" id="bearTout" autoplay="false" position="0 0 0" loop="false" on="playbearTout"></a-sound>
-        <a-sound src="#gardenTour" id="gardenT" autoplay="false" position="0 0 0" loop="false" on="playgardenT"></a-sound>
+        <a-sound src="#gardenTTour" id="gardenT" autoplay="false" position="0 0 0" loop="false" on="playgardenT"></a-sound>
         <a-sound src="#clumpTourA" id="clumpAT" autoplay="false" position="0 0 0" loop="false" on="playclumpAT"></a-sound>
         <a-sound src="#clumpTourB" id="clumpBT" autoplay="false" position="0 0 0" loop="false" on="playclumpBT"></a-sound>
 
@@ -565,8 +565,8 @@
               document.querySelector('#bearTout').emit('playbearTout');
 
               document.querySelector('#bearTout').addEventListener('sound-ended', function() {
-                 document.getElementById('#bearIn-target').setAttribute('visible', 'true')
-                 document.getElementById('#bearIn-move').setAttribute('visible', 'true')
+                 document.getElementById('bearIn-target').setAttribute('visible', 'true')
+                 document.getElementById('bearIn-move').setAttribute('visible', 'true')
               });
             }
 
