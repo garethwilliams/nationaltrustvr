@@ -50,6 +50,7 @@ Body {
 
 	border-style: solid;
     transition: background-color .5s ease;
+	cursor: pointer;
 }
 
 #onTopScreen #button:hover {
