@@ -7,11 +7,18 @@
     <script src="js/aframe-v0.3.2local.js"></script>
     <script src="js/aframe-stereo-component.js"></script>
     <script src="js/update-raycaster.js"></script>
+    <script src="js/aframe-mouse-cursor-component.min.js"></script>
     <script src="https://rawgit.com/ngokevin/aframe-animation-component/master/dist/aframe-animation-component.min.js"></script>
     <script src="https://rawgit.com/gmarty/aframe-ui-components/master/dist/aframe-ui-components.min.js"></script>
     <script src="https://npmcdn.com/aframe-event-set-component@3.0.1"></script>
     <script src="https://npmcdn.com/aframe-layout-component@3.0.1"></script>
     <script src="https://npmcdn.com/aframe-template-component@3.0.1"></script>
+    <script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+    <link href="assets/styles.css" rel="stylesheet">
+    
   </head>
   <body>
     <a-scene>
@@ -29,7 +36,7 @@
         <img id="gdnLeft" crossorigin="anonymous" src="assets/garden/sml/pan-left.jpg">
         <img id="gdnRight" crossorigin="anonymous" src="assets/garden/sml/pan-right.jpg">
 
-        <img id="bearRight" crossorigin="anonymous" src="assets/bearhut/sml/rgt-panBlur.jpg">
+        <img id="bearRight" crossorigin="anonymous" src="assets/bearhut/sml/rgt-panBlur2.jpg">
         <img id="bearLeft" crossorigin="anonymous" src="assets/bearhut/sml/lft-panBlur.jpg">
 
         <img id="clumpRight" crossorigin="anonymous" src="assets/clump/right.jpg">
@@ -83,6 +90,9 @@
         <a-mixin id="trigInAni" attribute="geometry.theta-length" begin="trigIn" to="360" dur="4000"></a-mixin>
         <a-mixin id="trigOutAni" attribute="geometry.theta-length" begin="trigOut" to="0" dur="4000"></a-mixin>
 
+        <a-mixin id="loadingAn" attribute="geometry.thetaLength" begin="gogogo" dur="6000" from="0" to="360" fill="backwards"></a-mixin>
+        
+
         <audio id="welcomeAud" src="assets/audio/welcome.mp3" preload="auto">
         <audio id="bearHutAud" src="assets/audio/bearHut.mp3" preload="auto">
         <audio id="hTourGAud" src="assets/audio/hTourGarden.mp3" preload="auto">
@@ -102,21 +112,22 @@
 
       </a-assets>
 
-     <a-camera stereocam="eye:left;">
-       <a-image id="splashImage" src="#splashInfo" width="1680" height="1491" scale="0.01 0.01 0.01" rotation="0 0 0" position="0 1 -20" visible="true" onmousedown="moveWelcome()" sound="src: #silence; loop: false; on: mousedown"></a-image>
 
-       <a-cursor id="cursorSplash" fuse="false" visible="true" position="0 0 -100" geometry="primitive: circle; radius: 0.5" material="color: #FFFFFF; shader: flat"></a-cursor>
 
-       <a-cursor id="cursFuse" scale="2.5 2.5 2.5" geometry="primitive: ring; thetaStart:0; thetaLength:0;" fuse="true" fuseTimeout="4000" cursor-feedback="dur:1500; property:geometry.thetaLength; to:360;" material="color: #FFCF27; shader: flat" visible="false"></a-cursor>
+      <a-camera stereocam="eye:left;" look-controls mouse-cursor> 
 
-      <a-cursor id="curs" fuse="true" fuseTimeout="2000" geometry="primitive: circle; radius: 0.5" scale="0.02 0.02 0.02" material="color: #FFCF27; shader: flat" visible="false"></a-cursor>
+      <a-cursor id="cursFuse" position="0 0 -10" scale="20 20 20" geometry="primitive: ring; thetaStart:90; thetaLength:20;" fuse="true" fuse-timeout="3000" cursor-feedback="dur:3000; property:geometry.thetaLength; to:360;" material="color: #FFCF27; shader: flat" visible="true">
+      </a-cursor> 
+
+ <!--      <a-cursor id="curs" fuse="true" fuse-timeout="2000" geometry="primitive: circle; radius: 0.5" scale="0.02 0.02 0.02" material="color: #FFCF27; shader: flat" visible="true"></a-cursor> -->
 
       </a-camera>
 
 
+
         <!-- Audio -->
         <a-sound src="#welcomeAud" id="welcomeS" autoplay="true" position="0 0 0" loop="true" volume="0.2"></a-sound>
-        <a-sound src="#bearHutAud" id="bearHut" autoplay="false" position="0 0 0" loop="true" on="playBH"></a-sound>
+        <a-sound src="#bearHutAud" id="bearHut" autoplay="false" position="0 0 0" loop="true" on="playBH" volume="0.7"></a-sound>
         <a-sound src="#hTourGAud" id="hTourG" autoplay="false" position="0 0 0" loop="false" on="playhTourG"></a-sound>
         <a-sound src="#hTourOAud" id="hTourO" autoplay="false" position="0 0 0" loop="false" on="playhTourO"></a-sound>
         <a-sound src="#hTourPAud" id="hTourP" autoplay="false" position="0 0 0" loop="false" on="playhTourP"></a-sound>
@@ -125,23 +136,30 @@
 
         <a-sound src="#hTourCAud" id="hTourC" autoplay="false" position="0 0 0" loop="false" on="playhTourC"></a-sound>
 
-        <a-sound src="#hMusicAud" id="hMusic" autoplay="false" position="-4 0 -4" loop="true" on="playhMusic"></a-sound>
+        <a-sound src="#hMusicAud" id="hMusic" autoplay="false" position="-4 0 -4" loop="true" on="playhMusic" volume="0.7"></a-sound>
 
-        <a-sound src="#gSoundsAud" id="gSounds" autoplay="false" position="0 0 0" loop="true" on="playgSounds"></a-sound>
+        <a-sound src="#gSoundsAud" id="gSounds" autoplay="false" position="0 0 0" loop="true" on="playgSounds" volume="0.7"></a-sound>
         <a-sound src="#eTourAud" id="eTour" autoplay="false" position="0 0 0" loop="false" on="playeTour"></a-sound>
 
-        <a-sound src="#outSoundsAud" id="outSounds" autoplay="false" position="0 0 0" loop="true" on="playOSounds"></a-sound>
+        <a-sound src="#outSoundsAud" id="outSounds" autoplay="false" position="0 0 0" loop="true" on="playOSounds" volume="0.7"></a-sound>
 
         <a-sound src="#bearRoarSound" id="bearRoar" autoplay="false" position="0 0 0" loop="false" on="playbearRoar"></a-sound>
 
         <!-- SPLASH -->
-        <a-entity id="splashScene" visible="true" opacity="1">
+        <a-entity id="splashScene" visible="false" opacity="1">
           <a-sky src="#splashBg" id="splashSky" stereo="eye:both" radius="5000" theta-length="360" rotation="0 0 0" scale="0.8 0.8 0.8" visible="true" onmousedown="moveWelcome()"></a-sky>
         </a-entity>
 
-        <!-- WELCOME -->
-        <a-entity id="welcomeScene" visible="false" opacity="1">
+        <div id="onTopScreen">
+          <p class="enterBtn" onmousedown="moveWelcome()" sound="src: #silence; loop: false; on: mousedown">Enter</p>
+        </div>
 
+        <!-- WELCOME -->
+        <a-entity id="welcomeScene" visible="true" opacity="1">
+
+        
+         
+  
           <a-sky src="#welBG" id="wel-panL" stereo="eye:both" radius="5000" theta-length="360" rotation="0 -89 0" scale="0.8 0.8 0.8" visible="true"></a-sky>
 
           <a-plane src="#welcome" width="586" height="418" side="front" rotation="0 0 0" position="0 3 -30" scale="0.03 0.03 0.03" transparent="true" sound="src: #silence; loop: false; on: mousedown"></a-plane>
@@ -150,11 +168,13 @@
 
           <a-image id="labelLocations" src="#locsLbl" width="1430" height="192" rotation="0 -35.82 0" position="20 10 -20.5" scale="0.01 0.01 0.01" visible="true" transparent="true"></a-image>
 
-          <a-image id="menuEnt-target" src="#menuEnt" width="1000" height="712" rotation="0 -35.82 0" position="18.58 3.80 -21.99" scale="0.01 0.01 0.01" onclick="moveEnt()" visible="true" transparent="true" data-interactive="true">
+          <a-image class="isClickable" id="menuEnt-target" src="#menuEnt" width="1000" height="712" rotation="0 -35.82 0" position="18.58 3.80 -21.99" scale="0.01 0.01 0.01" onclick="moveEnt()" visible="true" transparent="true" data-interactive="true">
           </a-image>
+    
 
-          <a-image id="menuHse-target" src="#menuHse" width="1000" height="712" rotation="0 -62.28 0" position="25.42 3.80 -13.21" scale="0.01 0.01 0.01" onclick="moveHse()" visible="true" transparent="true" data-interactive="true">
+          <a-image class="isClickable" id="menuHse-target" src="#menuHse" width="1000" height="712" rotation="0 -62.28 0" position="25.42 3.80 -13.21" scale="0.01 0.01 0.01" onclick="moveHse()" visible="true" transparent="true" data-interactive="true">
           </a-image>
+    
 
           <a-image id="menuGdn-target" src="#menuGdn" width="1000" height="712" rotation="0 -84.58 0" position="28.49 3.80 -2.30" scale="0.01 0.01 0.01" onclick="moveGDN()" visible="true" transparent="true" data-interactive="true">
           </a-image>
@@ -188,7 +208,7 @@
           <a-image id="house-target" src="#target" width="250" height="150" rotation="0 57 0" position="492 0 334" scale="1 1 1" onclick="moveHse()" visible="false" transparent="true" data-interactive="true">
           </a-image>
 
-          <a-image id="house-move" src="#moveToHse" width="1552" height="284" rotation="0 -123.50 0" position="436.27.45 -70 300" visible="false" scale="0.15 0.15 0.15">
+          <a-image id="house-move" src="#moveToHse" width="1552" height="284" rotation="0 -123.50 0" position="436.27.45 -70 300" visible="false" scale="0.15 0.15 0.15" onclick="moveHse()">
           </a-image>
 
           <a-image id="backToMenu" id="menu-target" src="#backMenu" width="300" height="300" rotation="270 0 0" position="0 -400 0" scale="0.6 0.6 0.6" onclick="moveMenu()" visible="true" transparent="true" data-interactive="true"> </a-image>
@@ -199,6 +219,7 @@
             document.querySelector('#eTour').addEventListener('sound-ended', function() {
                 document.getElementById('house-target').setAttribute('visible', 'true')
                 document.getElementById('house-move').setAttribute('visible', 'true')
+                // add image sayign the dor will open after the 30 second audio tour
             });
           </script>
         </a-entity>
@@ -228,15 +249,15 @@
          <!-- BEAR HUT -->
         <a-entity id="bearScene" visible="false" material="opacity: 1">
 
-          <a-sky src="#bearRight" id="bear-panR" stereo="eye:right" rotation="0 237 0" radius="5000" theta-length="360" rotation="0 100 0" scale="0.8 0.8 0.8" visible="true"></a-sky>
-          <a-sky src="#bearLeft" id="bear-panL" stereo="eye:left" rotation="0 237 0" radius="5000" theta-length="360" rotation="0 100 0" scale="0.8 0.8 0.8" visible="true"></a-sky>
+        <!-- <a-sky src="#bearRight" id="bear-panR" stereo="eye:both" rotation="0 237 0" radius="5000" theta-length="360" rotation="0 100 0" scale="0.8 0.8 0.8" visible="true"></a-sky> -->
+          <a-sky src="#bearLeft" id="bear-panL" stereo="eye:both" rotation="0 237 0" radius="5000" theta-length="360" rotation="0 100 0" scale="0.8 0.8 0.8" visible="true"></a-sky>
 
           <a-image id="backToMenu" id="menuBer-target" src="#backMenu" width="300" height="300" rotation="270 0 0" position="0 -400 0" scale="0.6 0.6 0.6" onclick="moveMenu()" visible="true" transparent="true" data-interactive="true"> </a-image>
 
-          <a-image id="bearIn-target" src="#target" width="300" height="180" rotation="0 -45 0" position="-488 0 423" scale="1 1 1" onclick="moveInBer()" visible="true" transparent="true" data-interactive="true">
+          <a-image id="bearIn-target" src="#target" width="280" height="120" rotation="0 -54 0" position="-515 -25 352" scale="1 1 1" onclick="moveInBer()" visible="true" transparent="true" data-interactive="true">
           </a-image>
 
-          <a-image id="bearIn-move" src="#moveToInBer" width="1874" height="284" rotation="0 -220 0" position="-401 -40 300" visible="true" scale="0.07 0.07 0.07">
+          <a-image id="bearIn-move" src="#moveToInBer" width="1874" height="284" rotation="0 -232 0" position="-260 -40 185" visible="true" scale="0.07 0.07 0.07" onclick="moveInBer()"  >
           </a-image> 
 
         </a-entity>
@@ -249,10 +270,10 @@
 
           <a-image id="backToMenu" id="menuBer-target" src="#backMenu" width="300" height="300" rotation="270 0 0" position="0 -400 0" scale="0.6 0.6 0.6" onclick="moveMenu()" visible="true" transparent="true" data-interactive="true"> </a-image>
 
-          <a-image id="clump-target" src="#targetDev" width="300" height="180" rotation="0 -45 0" position="-488 0 423" scale="1 1 1" onclick="moveCmp()" visible="true" transparent="true" data-interactive="true">
+          <a-image id="clump-target" src="#targetDev" width="280" height="140" rotation="33 380 0" position="56 -300 488" scale="1 1 1" onclick="moveCmp()" visible="true" transparent="true" data-interactive="true">
           </a-image>
 
-          <a-image id="clump-move" src="#moveClump" width="2276" height="284" rotation="0 -220 0" position="-401 -40 300" visible="true" scale="0.07 0.07 0.07">
+          <a-image id="clump-move" src="#moveClump" width="2276" height="284" rotation="-34 -162 0" position="18 -211 300" visible="true" scale="0.07 0.07 0.07" onclick="moveCmp()">
 
         </a-entity>
 
@@ -265,10 +286,10 @@
         
           <a-image id="backToMenu" id="menuBer-target" src="#backMenu" width="300" height="300" rotation="270 0 0" position="0 -400 0" scale="0.6 0.6 0.6" onclick="moveMenu()" visible="true" transparent="true" data-interactive="true"> </a-image>
 
-          <a-image id="clumpHorse-target" src="#target" width="300" height="180" rotation="0 -120 0" position="-488 0 -350" scale="1 1 1" onclick="moveClumpHorse()" visible="true" transparent="true" data-interactive="true">
+          <a-image id="clumpHorse-target" src="#targetDev" width="150" height="90" rotation="0 -120 0" position="-450 -15 -386" scale="1 1 1" onclick="moveClumpHorse()" visible="true" transparent="true" data-interactive="true">
           </a-image>
 
-          <a-image id="clumpHorse-move" src="#moveCmpHorse" width="1966" height="284" rotation="0 -120 0" position="-401 -40 -350" visible="true" scale="0.07 0.07 0.07">
+          <a-image id="clumpHorse-move" src="#moveCmpHorse" width="1966" height="284" rotation="0 56 0" position="-401 -40 -350" visible="true" scale="0.07 0.07 0.07" onclick="moveClumpHorse()">
           </a-image>
 
         </a-entity>
@@ -303,7 +324,7 @@
         <a-image id="wc-target" src="#target" width="500" height="1200" rotation="0 45 0" position="286 80 508" scale="1 1 1" onclick="showWC()" visible="true" transparent="true" data-interactive="true">
         </a-image>
 
-        <a-image id="wc-point" src="#infoPurp" width="100" height="100" rotation="0 45 0" position="228 -32 433" visible="true" scale="0.3 0.3 0.3"></a-image>
+        <a-image id="wc-point" src="#infoPurp" width="100" height="100" rotation="0 45 0" position="228 -32 433" visible="true" scale="0.3 0.3 0.3" onclick="showWC()"></a-image>
 
         <a-entity id="wc-situ" material="opacity: 0" visible="false" >
         <a-image src="#wcInfo" width="1342" height="1298" rotation="0 230 0" position="1035 80 720" scale="0.6 0.6 0.6" transparent="true" visible="true">
@@ -321,7 +342,7 @@
         <a-image id="og-target" src="#target" width="800" height="1500" rotation="0 180 0" position="-400 80 885" scale="1 1 1" onclick="showOG()" visible="true" transparent="true" data-interactive="true">
         </a-image>
 
-        <a-image id="og-point" src="#infoPurp" width="100" height="100" rotation="0 182 0" position="-166.48 -65.22 811" visible="true" scale="0.5 0.5 0.5"></a-image>
+        <a-image id="og-point" src="#infoPurp" width="100" height="100" rotation="0 182 0" position="-166.48 -65.22 811" visible="true" scale="0.5 0.5 0.5" onclick="showOG()"></a-image>
 
         <a-image id="og-situ" src="#ogInfo" width="1342" height="1298" rotation="0 135 0" position="-855 60 885" scale="0.6 0.6 0.6" transparent="true" visible="false" material="opacity: 0">
            <a-animation mixin="fade"></a-animation>
@@ -335,7 +356,7 @@
         <a-image id="tp-target" src="#target" width="800" height="1500" rotation="0 45 0" position="-385.03 706 -402" scale="1 1 1" onclick="showTP()" visible="true" transparent="true" data-interactive="true">
         </a-image>
 
-        <a-image id="tp-point" src="#infoPurp" width="100" height="100" rotation="0 45 0" position="-402.85 196 -248" visible="true" scale="0.3 0.3 0.3"></a-image>
+        <a-image id="tp-point" src="#infoPurp" width="100" height="100" rotation="0 45 0" position="-402.85 196 -248" visible="true" scale="0.3 0.3 0.3" onclick="showTP()"></a-image>
 
         <!-- <a-ring id="tp-timer" color="teal" rotation="0 45 0" position="-380 130 -241" radius-inner="20" theta-length="100" radius-outer="30">
           <a-animation mixin="trigInAni"></a-animation>
@@ -350,10 +371,10 @@
 
         <!-- Move from House to Garden -->
         <a-entity id="moveHseGdn" visible="false">
-          <a-image id="gdn-target" src="#target" width="250" height="200" rotation="0 120 0" position="492 50 -200" scale="1 1 1" onclick="moveGDN()" visible="true" transparent="true" data-interactive="true">
+          <a-image id="gdn-target" src="#targetDev" width="250" height="200" rotation="0 120 0" position="492 50 -200" scale="1 1 1" onclick="moveGDN()" visible="true" transparent="true" data-interactive="true">
           </a-image>
 
-          <a-image id="gdn-move" src="#moveGdn" width="913" height="142" rotation="0 -66 0" position="417.71 -50 -176" visible="true" scale="0.2 0.2 0.2">
+          <a-image id="gdn-move" src="#moveGdn" width="913" height="142" rotation="0 -66 0" position="417.71 -50 -176" visible="true" scale="0.2 0.2 0.2" onclick="moveGDN()">
           </a-image>
       </a-entity>
 
@@ -430,16 +451,16 @@
 
         function moveWelcome() {
           document.getElementById('welcomeScene').setAttribute('visible', 'true')
-          document.getElementById('splashImage').setAttribute('visible', 'false')
-          document.getElementById('splashScene').setAttribute('visible', 'false')
           document.getElementById('entranceScene').setAttribute('visible', 'false')
           document.getElementById('houseScene').setAttribute('visible', 'false')
           document.getElementById('gardenScene').setAttribute('visible', 'false')
           document.getElementById('bearScene').setAttribute('visible', 'false')
-          document.getElementById('bearInScene').setAttribute('visible', 'false')
+          document.getElementById('bearInScene').setAttribute('visible', 'false') 
 
-          document.getElementById('cursorSplash').setAttribute('visible', 'false')
-          document.getElementById('curs').setAttribute('visible', 'true')
+                
+
+          // document.getElementById('cursorSplash').setAttribute('visible', 'false')
+          // document.getElementById('curs').setAttribute('visible', 'true')
 
           document.querySelector('#gSounds').pause();
           document.querySelector('#hMusic').pause();
@@ -447,6 +468,8 @@
           document.querySelector('#outSounds').pause();
           document.querySelector('#welcomeS').play();
           document.querySelector('#bearHut').pause();
+
+           $("#onTopScreen").css("z-index", "-10"); 
         }
 
         function moveMenu() {
@@ -459,8 +482,8 @@
               document.getElementById('clumpScene').setAttribute('visible', 'false')
               document.getElementById('clumpHorseScene').setAttribute('visible', 'false')
 
-              document.getElementById('cursFuse').setAttribute('visible', 'false')
-              document.getElementById('curs').setAttribute('visible', 'true')
+              // document.getElementById('cursFuse').setAttribute('visible', 'false')
+              // document.getElementById('curs').setAttribute('visible', 'true')
 
               document.querySelector('#gSounds').pause();
               document.querySelector('#hMusic').pause();
@@ -478,8 +501,8 @@
               document.getElementById('bearScene').setAttribute('visible', 'false')
               document.getElementById('clumpScene').setAttribute('visible', 'false')
 
-              document.getElementById('cursFuse').setAttribute('visible', 'true')
-              document.getElementById('curs').setAttribute('visible', 'false')
+              // document.getElementById('cursFuse').setAttribute('visible', 'true')
+              // document.getElementById('curs').setAttribute('visible', 'false')
 
               document.querySelector('#welcomeS').pause();
               document.querySelector('#gSounds').play();
@@ -496,8 +519,8 @@
               document.getElementById('bearScene').setAttribute('visible', 'false')
               document.getElementById('clumpScene').setAttribute('visible', 'false')
 
-              document.getElementById('cursFuse').setAttribute('visible', 'true')
-              document.getElementById('curs').setAttribute('visible', 'false')
+              // document.getElementById('cursFuse').setAttribute('visible', 'true')
+              // document.getElementById('curs').setAttribute('visible', 'false')
 
               document.querySelector('#gSounds').pause();
               document.querySelector('#welcomeS').pause();
@@ -515,8 +538,8 @@
               document.getElementById('bearScene').setAttribute('visible', 'true')
               document.getElementById('clumpScene').setAttribute('visible', 'false')
 
-              document.getElementById('cursFuse').setAttribute('visible', 'true')
-              document.getElementById('curs').setAttribute('visible', 'false')
+              // document.getElementById('cursFuse').setAttribute('visible', 'true')
+              // document.getElementById('curs').setAttribute('visible', 'false')
 
               document.querySelector('#outSounds').pause();
               document.querySelector('#welcomeS').pause();
@@ -536,8 +559,8 @@
             document.getElementById('houseScene').setAttribute('visible', 'false')
             document.getElementById('gardenScene').setAttribute('visible', 'true')
 
-            document.getElementById('cursFuse').setAttribute('visible', 'true')
-            document.getElementById('curs').setAttribute('visible', 'false')
+            // document.getElementById('cursFuse').setAttribute('visible', 'true')
+            // document.getElementById('curs').setAttribute('visible', 'false')
 
             document.querySelector('#hMusic').pause();
             document.querySelector('#welcomeS').pause();
@@ -548,14 +571,11 @@
 
           function moveCmp() {
             document.getElementById('welcomeScene').setAttribute('visible', 'false')
-            document.getElementById('entranceScene').setAttribute('visible', 'false')
-            document.getElementById('houseScene').setAttribute('visible', 'false')
-            document.getElementById('gardenScene').setAttribute('visible', 'false')
-            document.getElementById('bearScene').setAttribute('visible', 'false')
+            document.getElementById('bearInScene').setAttribute('visible', 'false')
             document.getElementById('clumpScene').setAttribute('visible', 'true')
 
-            document.getElementById('cursFuse').setAttribute('visible', 'true')
-            document.getElementById('curs').setAttribute('visible', 'false')
+            // document.getElementById('cursFuse').setAttribute('visible', 'true')
+            // document.getElementById('curs').setAttribute('visible', 'false')
 
             document.querySelector('#hMusic').pause();
             document.querySelector('#welcomeS').pause();
@@ -590,8 +610,25 @@
           //   document.getElementById('curs').setAttribute('visible', 'true')
           // }
 
-
         </script>
+
+    //     <script>
+    //         function stopTimer() {
+    //           document.querySelector('#menuEnt-targetTimer').emit('backback');
+    //         }
+
+    //         function startTimer() {
+    //           document.querySelector('#menuEnt-targetTimer').emit('gogogo');
+    //         }
+
+    //         function stopTimerHse() {
+    //           document.querySelector('#menuHse-targetTimer').emit('backback');
+    //         }
+
+    //         function startTimerHse() {
+    //           document.querySelector('#menuHse-targetTimer').emit('gogogo');
+    //         }
+    // </script>
 
         <script>
           window.addEventListener('touchstart', function() {
