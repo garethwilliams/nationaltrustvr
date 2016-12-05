@@ -271,10 +271,10 @@
 
           <a-image id="backToMenu" id="menuBer-target" src="#backMenu" width="300" height="300" rotation="270 0 0" position="0 -400 0" scale="0.6 0.6 0.6" onclick="moveMenu()" visible="true" transparent="true" data-interactive="true"> </a-image>
 
-          <a-image id="bearIn-target" src="#target" width="280" height="120" rotation="0 -54 0" position="-515 -25 352" scale="1 1 1" onclick="moveInBer()" visible="true" transparent="true" data-interactive="true">
+          <a-image id="bearIn-target" src="#target" width="280" height="120" rotation="0 -54 0" position="-515 -25 352" scale="1 1 1" onclick="moveInBer()" visible="false" transparent="true" data-interactive="true">
           </a-image>
 
-          <a-image id="bearIn-move" src="#moveToInBer" width="1874" height="284" rotation="0 -232 0" position="-260 -40 185" visible="true" scale="0.07 0.07 0.07" onclick="moveInBer()"  >
+          <a-image id="bearIn-move" src="#moveToInBer" width="1874" height="284" rotation="0 -232 0" position="-260 -40 185" visible="false" scale="0.07 0.07 0.07" onclick="moveInBer()"  >
           </a-image>
 
         </a-entity>
@@ -563,6 +563,11 @@
               document.querySelector('#bearHut').play();
               document.querySelector('#bearHut').emit('playBH');
               document.querySelector('#bearTout').emit('playbearTout');
+
+              document.querySelector('#bearTout').addEventListener('sound-ended', function() {
+                 document.getElementById('#bearIn-target').setAttribute('visible', 'true')
+                 document.getElementById('#bearIn-move').setAttribute('visible', 'true')
+              });
             }
 
             function moveInBer() {
