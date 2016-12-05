@@ -253,10 +253,10 @@
 
           <a-image id="backToMenu" id="menu-target" src="#backMenu" width="300" height="300" rotation="270 0 0" position="0 -400 0" scale="0.6 0.6 0.6" onclick="moveMenu()" visible="true" transparent="true" data-interactive="true"> </a-image>
 
-          <a-image id="bear-target" src="#target" width="300" height="180" rotation="0 0 0" position="-110 0 788" scale="1 1 1" onclick="moveBer()" visible="true" transparent="true" data-interactive="true">
+          <a-image id="bear-target" src="#target" width="300" height="180" rotation="0 0 0" position="-110 0 788" scale="1 1 1" onclick="moveBer()" visible="false" transparent="true" data-interactive="true" onclick="moveMenu()">
           </a-image>
 
-          <a-image id="bear-move" src="#moveToBer" width="1430" height="284" rotation="0 -180 0" position="-51 -40 300" visible="true" scale="0.07 0.07 0.07">
+          <a-image id="bear-move" src="#moveToBer" width="1430" height="284" rotation="0 -180 0" position="-51 -40 300" visible="false" scale="0.07 0.07 0.07">
           </a-image>
 
         </a-entity>
@@ -274,7 +274,7 @@
           <a-image id="bearIn-target" src="#target" width="280" height="120" rotation="0 -54 0" position="-515 -25 352" scale="1 1 1" onclick="moveInBer()" visible="false" transparent="true" data-interactive="true">
           </a-image>
 
-          <a-image id="bearIn-move" src="#moveToInBer" width="1874" height="284" rotation="0 -232 0" position="-260 -40 185" visible="false" scale="0.07 0.07 0.07" onclick="moveInBer()"  >
+          <a-image id="bearIn-move" src="#moveToInBer" width="1874" height="284" rotation="0 -232 0" position="-260 -40 185" visible="false" scale="0.07 0.07 0.07" onclick="moveInBer()">
           </a-image>
 
         </a-entity>
@@ -303,10 +303,10 @@
 
           <a-image id="backToMenu" id="menuBer-target" src="#backMenu" width="300" height="300" rotation="270 0 0" position="0 -400 0" scale="0.6 0.6 0.6" onclick="moveMenu()" visible="true" transparent="true" data-interactive="true"> </a-image>
 
-          <a-image id="clumpHorse-target" src="#target" width="150" height="90" rotation="0 -120 0" position="-450 -15 -386" scale="1 1 1" onclick="moveClumpHorse()" visible="false" transparent="true" data-interactive="true">
+          <a-image id="clumpHorse-target" src="#target" width="150" height="90" rotation="0 -120 0" position="-400 -15 -336" scale="1 1 1" onclick="moveClumpHorse()" visible="false" transparent="true" data-interactive="true">
           </a-image>
 
-          <a-image id="clumpHorse-move" src="#moveCmpHorse" width="1966" height="284" rotation="0 56 0" position="-401 -40 -350" visible="false" scale="0.07 0.07 0.07" onclick="moveClumpHorse()">
+          <a-image id="clumpHorse-move" src="#moveCmpHorse" width="1966" height="284" rotation="0 56 0" position="-300 -40 -250" visible="false" scale="0.07 0.07 0.07" onclick="moveClumpHorse()">
           </a-image>
 
         </a-entity>
@@ -598,6 +598,11 @@
             document.querySelector('#hTourG').addEventListener('sound-ended', function() {
                  document.querySelector('#gardenT').emit('playgardenT');
               });
+
+            document.querySelector('#gardenT').addEventListener('sound-ended', function() {
+                 document.getElementById('bear-target').setAttribute('visible', 'true')
+                 document.getElementById('bear-move').setAttribute('visible', 'true')
+             });
           }
 
           function moveCmp() {
@@ -637,38 +642,9 @@
             document.querySelector('#menuLoad').emit('loadOut');
           }
 
-
-          // Unfinished switching cursors
-          // onmouseenter="changeCurs()" onmouseleave="changeCursBack()"
-          // function changeCurs() {
-          //   document.getElementById('cursFuse').setAttribute('visible', 'true')
-          //   document.getElementById('curs').setAttribute('visible', 'false')
-          // }
-
-          // function changeCursBack() {
-          //   document.getElementById('cursFuse').setAttribute('visible', 'false')
-          //   document.getElementById('curs').setAttribute('visible', 'true')
-          // }
-
         </script>
 
-    //     <script>
-    //         function stopTimer() {
-    //           document.querySelector('#menuEnt-targetTimer').emit('backback');
-    //         }
 
-    //         function startTimer() {
-    //           document.querySelector('#menuEnt-targetTimer').emit('gogogo');
-    //         }
-
-    //         function stopTimerHse() {
-    //           document.querySelector('#menuHse-targetTimer').emit('backback');
-    //         }
-
-    //         function startTimerHse() {
-    //           document.querySelector('#menuHse-targetTimer').emit('gogogo');
-    //         }
-    // </script>
 
         <script>
           window.addEventListener('touchstart', function() {
