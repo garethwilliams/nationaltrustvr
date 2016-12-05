@@ -648,11 +648,12 @@
         </script>
 
         <audio id="mysoundclip" preload="auto">
-           <source src="assets/audio/silence.mp3" id="1"></source>
+           <source src="assets/audio/silence.mp3" id="one"></source>
         </audio>
 
         <script type="text/javascript">
           var audio = $("#mysoundclip")[0];
+          var audio = document.getElementById('one');
           $("#button").click(function() {
           audio.play();
           });​
