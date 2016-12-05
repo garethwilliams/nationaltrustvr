@@ -13,6 +13,7 @@
     <script src="https://npmcdn.com/aframe-event-set-component@3.0.1"></script>
     <script src="https://npmcdn.com/aframe-layout-component@3.0.1"></script>
     <script src="https://npmcdn.com/aframe-template-component@3.0.1"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <script
   src="https://code.jquery.com/jquery-3.1.1.min.js"
   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
@@ -151,15 +152,18 @@
         </a-entity>
 
         <div id="onTopScreen">
-         
-          <p id="button">enter</p>
+
+            <div id="onTopScreen--content">
+                <img src="assets/splash/nt-logo-white.png" class="animated fadeInUp">
+                <h1 class="animated fadeInUp">Welcome to The National Trust Virtual Reality</h1>
+                <h2 class="animated fadeInUp">This experience is currently in public beta. You may experience some technical issues if you are using an older smartphone.</h2>
+                <p id="button" onmousedown="moveWelcome()" class="animated fadeInUp">Enter the experience</p>
+            </div>
+
         </div>
 
         <!-- WELCOME -->
         <a-entity id="welcomeScene" visible="true" opacity="1">
-
-
-
 
           <a-sky src="#welBG" id="wel-panL" stereo="eye:both" radius="5000" theta-length="360" rotation="0 -89 0" scale="0.8 0.8 0.8" visible="true"></a-sky>
 
