@@ -151,7 +151,7 @@
         </a-entity>
 
         <div id="onTopScreen">
-          <button type="button" onmousedown="moveWelcome()">play</button>
+          <button type="button" id="button" onmousedown="moveWelcome()">play</button>
         </div>
 
         <!-- WELCOME -->
@@ -653,7 +653,7 @@
 
         <script type="text/javascript">
           var audio = $("#mysoundclip")[0];
-          $("button").click(function() {
+          $("#button").click(function() {
           audio.play();
           });​
         </script>
