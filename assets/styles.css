@@ -64,6 +64,7 @@ Body {
 	#onTopScreen--content,
 	#onTopScreen h1,
 	#onTopScreen h2 {
-		width: 90%;
+		width: 100%;
+			margin: 0.5em auto 0.5em;
 	}
 }
