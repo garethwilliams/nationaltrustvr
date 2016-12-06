@@ -20,6 +20,36 @@
   crossorigin="anonymous"></script>
     <link href="assets/styles.css" rel="stylesheet">
 
+    <script>
+          window.addEventListener('touchstart', function() {
+
+            // create new buffer source for playback with an already
+            // loaded and decoded empty sound file
+            var source = myContext.createBufferSource();
+            source.buffer = myDecodedBuffer;
+
+            // connect to output (your speakers)
+            source.connect(myContext.destination);
+
+            // play the file
+            source.noteOn(0);
+
+          }, false);
+        </script>
+
+
+        <script type="text/javascript">
+          window.addEventListener("touchend", ios_unlock_sound, false);
+            
+            function ios_unlock_sound(event) { 
+              var buffer = g_WebAudioContext.createBuffer(1, 1, 22050); 
+              var source = g_WebAudioContext.createBufferSource(); 
+              source.buffer = buffer; source.connect(g_WebAudioContext.destination); 
+              source.noteOn(0); 
+              window.removeEventListener("touchend", ios_unlock_sound, false);
+            }
+        </script>
+
   </head>
   <body>
     <a-scene>
@@ -599,37 +629,22 @@
 
 
 
-        <script>
-          window.addEventListener('touchstart', function() {
+        
 
-            // create new buffer source for playback with an already
-            // loaded and decoded empty sound file
-            var source = myContext.createBufferSource();
-            source.buffer = myDecodedBuffer;
-
-            // connect to output (your speakers)
-            source.connect(myContext.destination);
-
-            // play the file
-            source.noteOn(0);
-
-          }, false);
-        </script>
-
-        <audio id="mysoundclip">
+       <!--  <audio id="mysoundclip">
            <source src="assets/audio/silence.mp3" id="one"></source>
-        </audio>
+        </audio> -->
 
         <script type="text/javascript">
-        //  var audio = $("#mysoundclip")[0];
-          var audio = document.getElementById('mysoundclip');
+        // //  var audio = $("#mysoundclip")[0];
+        //   var audio = document.getElementById('mysoundclip');
 
-          $("#button").mousedown(function() {
-            console.log(audio)
-            audio.play();
-            moveWelcome();
-          });
-        </script>
+           $("#button").mousedown(function() {
+        //     console.log(audio)
+        //     audio.play();
+             moveWelcome();
+           });
+         </script>
 
       </a-scene>
   </body>
