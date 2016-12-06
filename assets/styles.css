@@ -1,6 +1,7 @@
 Body {
 	margin: 0;
 	font-size: 16px;
+	font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
 }
 
 #onTopScreen {
@@ -19,7 +20,7 @@ Body {
 
 #onTopScreen h1 {
 	color: #fff;
-    font-size: 2em;
+  font-size: 2em;
 
 	width: 40%;
 	margin: 1em auto 1em;
@@ -37,19 +38,18 @@ Body {
 	color: #fff;
 	border-width: .125em;
 	border-radius: 1000px;
-    padding-left: 1.5em;
-    padding-right: 1.5em;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
 
 	font-weight: 400;
-    font-size: 1.2em;
-    line-height: 1.1667;
-    font-family: NationalTrustDisplayTTRegular;
+  font-size: 1.2em;
+  line-height: 1.1667;
 
-    padding-top: .58334em;
-    padding-bottom: .58334em;
+  padding-top: .58334em;
+  padding-bottom: .58334em;
 
 	border-style: solid;
-    transition: background-color .5s ease;
+  transition: background-color .5s ease;
 	cursor: pointer;
 }
 
